@@ -101,7 +101,7 @@ class SearchExclude
         $exclude = !(false === array_search($post->ID, $excluded));
 
         wp_nonce_field( 'sep_metabox_nonce', 'metabox_nonce' );
-        include(__DIR__ . '/metabox.php');
+        include(dirname(__FILE__) . '/metabox.php');
     }
 
     public function adminMenu()
@@ -145,7 +145,7 @@ class SearchExclude
             'order'=>'ASC',
             'nopaging' => true,
         ));
-        include(__DIR__ . '/options.php');
+        include(dirname(__FILE__) . '/options.php');
     }
 
     public function saveOptions()
