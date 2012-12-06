@@ -27,5 +27,8 @@ You can also view the list of all the items that are excluded from search on the
 
 == Changelog ==
 
+= 1.0.1 =
+* Fixed: PHP 5.2 compatibility
+
 = 1.0 =
 * Initial release
