@@ -2,8 +2,8 @@
 Contributors: pronskiy
 Tags: admin, plugin, search
 Requires at least: 3.3
-Tested up to: 3.4
-Stable tag: 1.0.1
+Tested up to: 3.5
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,6 +26,9 @@ You can also view the list of all the items that are excluded from search on the
 1. screenshot-1.png
 
 == Changelog ==
+
+= 1.0.2 =
+* Fixed: Conflict with Yoast WordPress SEO plugin
 
 = 1.0.1 =
 * Fixed: PHP 5.2 compatibility
