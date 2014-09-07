@@ -2,9 +2,10 @@
 /*
 Plugin Name: Search Exclude
 Description: Exclude any page or post from the WordPress search results by checking off the checkbox.
-Version: 1.0.2
+Version: 1.1.0
 Author: Roman Pronskiy
 Author URI: http://pronskiy.com
+Plugin URI: http://wordpress.org/plugins/search-exclude/
 */
 
 /*
@@ -37,8 +38,11 @@ class SearchExclude
         add_action('admin_init', array($this, 'saveOptions') );
         add_action('admin_menu', array($this, 'adminMenu'));
         add_action('post_updated', array($this, 'postSave'));
+        add_action('edit_attachment', array($this, 'postSave'));
         add_action('add_meta_boxes', array($this, 'addMetabox') );
         add_filter('pre_get_posts',array($this, 'searchFilter'));
+
+        add_filter('bbp_has_replies_query', array($this, 'flagBbPress'));
     }
 
     /**
@@ -92,10 +96,15 @@ class SearchExclude
 
     public function addMetabox()
     {
-        add_meta_box( 'sep_metabox_id', 'Search Exclude', array($this, 'metabox'), null);
+        $currentScreen = get_current_screen();
+        /* Do not show meta box on service pages */
+        if (empty($currentScreen->post_type)) {
+            return;
+        }
+        add_meta_box( 'sep_metabox_id', 'Search Exclude', array($this, 'metabox'), null, 'side');
     }
 
-    public function metabox( $post )
+    public function metabox($post)
     {
         $excluded = $this->getExcluded();
         $exclude = !(false === array_search($post->ID, $excluded));
@@ -109,7 +118,7 @@ class SearchExclude
         add_options_page(
             'Search Exclude',
             'Search Exclude',
-            10,
+            'manage_options',
             'search_exclude',
             array($this, 'options')
         );
@@ -117,10 +126,30 @@ class SearchExclude
 
     public function searchFilter($query)
     {
-        if ($query->is_search) {
-            $query->set('post__not_in', array_merge($query->get('post__not_in'), $this->getExcluded()));
+        if ((!is_admin() || (defined('DOING_AJAX') && DOING_AJAX)) && $query->is_search && !$this->isBbPress($query)) {
+            $query->set('post__not_in', array_merge(array(), $this->getExcluded()));
         }
         return $query;
+    }
+
+    public function isBbPress($query)
+    {
+        return $query->get('___s2_is_bbp_has_replies');
+    }
+
+    /**
+     * Flags a WP Query has being a `bbp_has_replies()` query.
+     * @attaches-to ``add_filter('bbp_has_replies_query');``
+     *
+     * @param array $args Query arguments passed by the filter.
+     *
+     * @return array The array of ``$args``.
+     *
+     * @see Workaround for bbPress and the `s` key. See: <http://bit.ly/1obLpv4>
+     */
+    public function flagBbPress($args)
+    {
+        return array_merge($args, array('___s2_is_bbp_has_replies' => true));
     }
 
     public function postSave( $post_id )
@@ -141,6 +170,7 @@ class SearchExclude
 
         $query = new WP_Query( array(
             'post_type' => 'any',
+            'post_status' => 'any',
             'post__in' => $excluded,
             'order'=>'ASC',
             'nopaging' => true,
