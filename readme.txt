@@ -2,8 +2,8 @@
 Contributors: pronskiy, williamdodson, stevelock
 Tags: admin, plugin, search
 Requires at least: 3.3
-Tested up to: 3.9
-Stable tag: 1.0.6
+Tested up to: 4.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,6 +27,12 @@ You can also view the list of all the items that are excluded from search on the
 2. screenshot-2.png
 
 == Changelog ==
+
+= 1.1.0 =
+* Tested up to WP 4.0
+* Do not show Plugin on some service pages in Admin
+* Fixed conflict with bbPress
+* Fixed deprecation warning when DEBUG is on
 
 = 1.0.6 =
 * Fixed search filtering for AJAX requests
