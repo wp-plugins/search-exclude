@@ -2,8 +2,8 @@
 Contributors: pronskiy, williamdodson, stevelock
 Tags: admin, plugin, search
 Requires at least: 3.3
-Tested up to: 4.0
-Stable tag: 1.1.0
+Tested up to: 4.1
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,9 +11,10 @@ Hide any post or page from the search results.
 
 == Description ==
 
-With this plugin you can exclude any page, post or whatever from the search results by checking off the corresponding checkbox on post/page edit page.
+With this plugin you can exclude any page, post or whatever from the WordPress search results by checking off the corresponding checkbox on post/page edit page.
+Supports quick and bulk edit.
 
-You can also view the list of all the items that are excluded from search on the plugin settings page.
+On the plugin settings page you can also see the list of all the items that are hidden from search.
 
 == Installation ==
 
@@ -27,6 +28,10 @@ You can also view the list of all the items that are excluded from search on the
 2. screenshot-2.png
 
 == Changelog ==
+
+= 1.2.0 =
+* Added quick and bulk edit support
+* Tested up to WP 4.1
 
 = 1.1.0 =
 * Tested up to WP 4.0
