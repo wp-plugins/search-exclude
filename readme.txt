@@ -1,19 +1,20 @@
 === Search Exclude ===
-Contributors: pronskiy
+Contributors: pronskiy, williamdodson, stevelock
 Tags: admin, plugin, search
 Requires at least: 3.3
-Tested up to: 3.5
-Stable tag: 1.0.2
+Tested up to: 4.1
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Exclude any post or page from the search results.
+Hide any post or page from the search results.
 
 == Description ==
 
-With this plugin you can exclude any page, post or whatever from the search results by checking off the corresponding checkbox on post/page edit page.
+With this plugin you can exclude any page, post or whatever from the WordPress search results by checking off the corresponding checkbox on post/page edit page.
+Supports quick and bulk edit.
 
-You can also view the list of all the items that are excluded from search on the plugin settings page.
+On the plugin settings page you can also see the list of all the items that are hidden from search.
 
 == Installation ==
 
@@ -24,8 +25,33 @@ You can also view the list of all the items that are excluded from search on the
 == Screenshots ==
 
 1. screenshot-1.png
+2. screenshot-2.png
 
 == Changelog ==
+
+= 1.2.0 =
+* Added quick and bulk edit support
+* Tested up to WP 4.1
+
+= 1.1.0 =
+* Tested up to WP 4.0
+* Do not show Plugin on some service pages in Admin
+* Fixed conflict with bbPress
+* Fixed deprecation warning when DEBUG is on
+
+= 1.0.6 =
+* Fixed search filtering for AJAX requests
+
+= 1.0.5 =
+* Not excluding items from search results on admin interface
+
+= 1.0.4 =
+* Fixed links on settings page with list of excluded items
+* Tested up to WP 3.9
+
+= 1.0.3 =
+* Added support for excluding attachments from search results
+* Tested up to WP 3.8
 
 = 1.0.2 =
 * Fixed: Conflict with Yoast WordPress SEO plugin
