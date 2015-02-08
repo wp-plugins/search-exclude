@@ -68,7 +68,7 @@ class SearchExclude
 
     protected function savePostIdsToSearchExclude($postIds, $exclude)
     {
-        $exclude  = boolval($exclude);
+        $exclude  = (bool) $exclude;
         $excluded = $this->getExcluded();
 
         if ($exclude) {

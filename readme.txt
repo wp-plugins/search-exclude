@@ -3,7 +3,7 @@ Contributors: pronskiy, williamdodson, stevelock
 Tags: admin, plugin, search
 Requires at least: 3.3
 Tested up to: 4.1
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,6 +28,9 @@ On the plugin settings page you can also see the list of all the items that are 
 2. screenshot-2.png
 
 == Changelog ==
+
+= 1.2.1 =
+* Fixed bug when unable to save post on PHP <5.5 because of boolval() usage
 
 = 1.2.0 =
 * Added quick and bulk edit support
